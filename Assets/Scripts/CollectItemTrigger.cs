@@ -13,6 +13,13 @@ public class CollectItemTrigger : MonoBehaviour
                 targetToReveal.SetActive(true); 
             }
 
+            // Notify the WorldSwitcher
+            WorldSwitcher ws = FindObjectOfType<WorldSwitcher>();
+            if (ws != null)
+            {
+                ws.CollectMemoryItem();
+            }
+
             Destroy(gameObject); 
         }
     }

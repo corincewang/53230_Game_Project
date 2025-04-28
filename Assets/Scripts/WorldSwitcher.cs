@@ -7,9 +7,10 @@ public class WorldSwitcher : MonoBehaviour
     public Camera mainCamera;
 
     public Color outerColor = Color.grey;
-    public Color innerColor = new Color(0.3f, 0.2f, 0.5f); 
+    public Color innerColor = new Color(0.3f, 0.2f, 0.5f);
 
     private bool isInInnerWorld = false;
+    private bool hasMemoryItem = false;
 
     void Start()
     {
@@ -24,7 +25,7 @@ public class WorldSwitcher : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && hasMemoryItem)
         {
             isInInnerWorld = !isInInnerWorld;
 
@@ -36,5 +37,10 @@ public class WorldSwitcher : MonoBehaviour
                 mainCamera.backgroundColor = isInInnerWorld ? innerColor : outerColor;
             }
         }
+    }
+
+    public void CollectMemoryItem()
+    {
+        hasMemoryItem = true;
     }
 }
